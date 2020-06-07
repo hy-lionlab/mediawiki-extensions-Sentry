@@ -72,13 +72,13 @@ class SentryHooks {
 	 * @param bool $suppressed True if the error is below the level set in error_reporting().
 	 */
 	public static function onLogException( $e, $suppressed ) {
-		global $wgSentryDsn, $wgSentryLogPhpErrors, $wgVersion;
+		global $wgSentryDsn, $wgSentryLogPhpErrors, $wgVersion, $wgSentryEnvironment;
 
 		if ( !$wgSentryLogPhpErrors || $suppressed ) {
 			return;
 		}
 
-		$client = new Raven_Client( $wgSentryDsn );
+		Sentry\init(['dsn' => $wgSentryDsn, 'environment' => $wgSentryEnvironment]);
 
 		$data = [
 			'tags' => [
@@ -96,9 +96,6 @@ class SentryHooks {
 			$data['culprit'] = $e->fname;
 		}
 
-		$client->captureException( $e, $data );
-		if ( $client->getLastError() !== null ) {
-			wfDebugLog( 'sentry', 'Sentry error: ' . $client->getLastError() );
-		}
+		Sentry\captureException( $e, $data );
 	}
 }

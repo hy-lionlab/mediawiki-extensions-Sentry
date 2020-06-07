@@ -1,56 +1,45 @@
 {
-	"name": "Sentry",
-	"version": "0.1",
-	"author": "Gergő Tisza",
-	"url": "https://www.mediawiki.org/wiki/Extension:Sentry",
-	"descriptionmsg": "sentry-desc",
-	"license-name": "MIT",
-	"type": "other",
-	"MessagesDirs": {
-		"Sentry": [
-			"i18n"
-		]
-	},
-	"AutoloadClasses": {
-		"SentryHooks": "includes/SentryHooks.php"
-	},
-	"ResourceModules": {
-		"sentry.init": {
-			"scripts": [
-				"init.js"
-			]
-		},
-		"sentry.raven": {
-			"scripts": [
-				"raven/raven.js"
-			]
-		}
-	},
-	"ResourceFileModulePaths": {
-		"localBasePath": "resources",
-		"remoteExtPath": "Sentry/resources"
-	},
-	"Hooks": {
-		"ResourceLoaderGetConfigVars": [
-			"SentryHooks::onResourceLoaderGetConfigVars"
-		],
-		"BeforePageDisplay": [
-			"SentryHooks::onBeforePageDisplay"
-		],
-		"ResourceLoaderTestModules": [
-			"SentryHooks::onResourceLoaderTestModules"
-		],
-		"LogException": [
-			"SentryHooks::onLogException"
-		]
-	},
-	"config": {
-		"SentryEventGateUri": null,
-		"SentryDsn": null,
-		"SentryWhitelist": false,
-		"SentryLogOnError": true,
-		"SentryLogPhpErrors": true
-	},
-	"load_composer_autoloader": true,
-	"manifest_version": 1
+  "name": "Sentry",
+  "version": "0.1",
+  "author": "Gergő Tisza",
+  "url": "https://www.mediawiki.org/wiki/Extension:Sentry",
+  "descriptionmsg": "sentry-desc",
+  "license-name": "MIT",
+  "type": "other",
+  "MessagesDirs": {
+    "Sentry": ["i18n"]
+  },
+  "AutoloadClasses": {
+    "SentryHooks": "includes/SentryHooks.php"
+  },
+  "ResourceModules": {
+    "sentry.init": {
+      "scripts": ["init.js"]
+    },
+    "sentry.raven": {
+      "scripts": ["raven/raven.js"]
+    }
+  },
+  "ResourceFileModulePaths": {
+    "localBasePath": "resources",
+    "remoteExtPath": "Sentry/resources"
+  },
+  "Hooks": {
+    "ResourceLoaderGetConfigVars": [
+      "SentryHooks::onResourceLoaderGetConfigVars"
+    ],
+    "BeforePageDisplay": ["SentryHooks::onBeforePageDisplay"],
+    "ResourceLoaderTestModules": ["SentryHooks::onResourceLoaderTestModules"],
+    "LogException": ["SentryHooks::onLogException"]
+  },
+  "config": {
+    "SentryEventGateUri": null,
+    "SentryDsn": null,
+    "SentryWhitelist": false,
+    "SentryLogOnError": true,
+    "SentryLogPhpErrors": true,
+    "SentryEnvironment": "production"
+  },
+  "load_composer_autoloader": true,
+  "manifest_version": 1
 }

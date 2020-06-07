@@ -12,28 +12,10 @@
   "AutoloadClasses": {
     "SentryHooks": "includes/SentryHooks.php"
   },
-  "ResourceModules": {
-    "sentry.init": {
-      "scripts": ["init.js"]
-    },
-    "sentry.raven": {
-      "scripts": ["raven/raven.js"]
-    }
-  },
-  "ResourceFileModulePaths": {
-    "localBasePath": "resources",
-    "remoteExtPath": "Sentry/resources"
-  },
   "Hooks": {
-    "ResourceLoaderGetConfigVars": [
-      "SentryHooks::onResourceLoaderGetConfigVars"
-    ],
-    "BeforePageDisplay": ["SentryHooks::onBeforePageDisplay"],
-    "ResourceLoaderTestModules": ["SentryHooks::onResourceLoaderTestModules"],
     "LogException": ["SentryHooks::onLogException"]
   },
   "config": {
-    "SentryEventGateUri": null,
     "SentryDsn": null,
     "SentryWhitelist": false,
     "SentryLogOnError": true,
